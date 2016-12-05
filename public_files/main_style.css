@@ -28,33 +28,36 @@ body{
 #forum_div{
     position: relative;
 }
-.forum_entry{
-    margin: 2px;
-}
-.forum_user,.forum_user_me{
+.forum_user{
     display: inline-block;
-    border-radius: 10px;
-    background-color: var(--green2);
-    border: 5px solid var(--green3);
     width: 15%;
     margin-right: 1%;
     padding-right: 1%;
     text-align: center;
 }
 
-.forum_post,.forum_post_me{
+.forum_post{
     display: inline-block;
-    border-radius: 10px;
-    background-color: var(--green3);
-    border: 5px solid var(--green3);
-    width: 50%;
 }
-.forum_user_me{
+.forum_entry{
+    position: relative;
+    margin: 2px;
+    background-color: var(--green2);
+    border: 5px solid var(--green3);
+    border-radius: 10px;
+}
+.forum_entry .forum_user{
+    background-color: var(--green3);
+}
+.forum_entry_me{
+    position: relative;
+    margin: 2px;
     background-color: var(--orange2);
     border: 5px solid var(--orange3);
+    border-radius: 10px;
 }
-.forum_post_me{
-    background-color: var(--orange3);
+.forum_entry_me .forum_user{
+    background-color: var(--orange2);
     border: 5px solid var(--orange3);
 }
 #title_menu_bar{
