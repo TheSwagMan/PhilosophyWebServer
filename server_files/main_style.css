@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+:root{
+    --blue0: #CCEEFF;
+    --blue1: #BBDDFF;
+    --blue2: #99BBFF;
+    --blue3: #88AAFF;
+    --blue4: #002266;
+    --black: #000;
+    --white: #FFF;
+}
+
+body{
+    font-family: 'Droid Sans', sans-serif;
+    background-color: var(--blue1);
+    color: #000000;
+    font-size: 150%;
+}
+#forum_div{
+    position: relative;
+}
+.forum_entry{
+    margin: 2px;
+}
+.forum_user{
+    background-color: var(--blue2);
+    border: 1px solid var(--blue3);
+    display: inline-block;
+    width: 15%;
+    margin-right: 1%;
+    padding-right: 1%;
+    vertical-align: top;
+    text-align: center;
+}
+.forum_post{
+    background-color: var(--blue2);
+    border: 1px solid var(--blue3);
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+#title_menu_bar{
+    position: static;
+    top: 0;
+    left: 0;
+    height: auto;
+    width: 100%;
+    background-color: var(--blue2);
+	
+}
+#title_menu_bar h1{
+    font-family: 'Raleway', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-size: 300%;
+    text-align: center;
+}
+#title_menu_bar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--blue3);
+}
+#title_menu_bar ul li{
+    float: left;
+}
+#title_menu_bar ul li a{
+    display: block;
+    color: var(--blue0);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+#title_menu_bar ul li a:hover {
+    color: var(--blue3);
+    background-color: var(--blue0);
+}
