@@ -1,10 +1,20 @@
 @CHARSET "UTF-8";
 :root{
-    --blue0: #CCEEFF;
-    --blue1: #BBDDFF;
-    --blue2: #99BBFF;
-    --blue3: #88AAFF;
-    --blue4: #002266;
+    --blue0: #CEF;
+    --blue1: #BDF;
+    --blue2: #9BF;
+    --blue3: #8AF;
+    --blue4: #026;
+    --green0: #CFC;
+    --green1: #AFA;
+    --green2: #8F8;
+    --green3: #5C5;
+    --green4: #161;
+    --orange0: #FC8;
+    --orange1: #FA5;
+    --orange2: #F83;
+    --orange3: #D50;
+    --orange4: #720;
     --black: #000;
     --white: #FFF;
 }
@@ -21,22 +31,31 @@ body{
 .forum_entry{
     margin: 2px;
 }
-.forum_user{
-    background-color: var(--blue2);
-    border: 1px solid var(--blue3);
+.forum_user,.forum_user_me{
     display: inline-block;
+    border-radius: 10px;
+    background-color: var(--green2);
+    border: 5px solid var(--green3);
     width: 15%;
     margin-right: 1%;
     padding-right: 1%;
-    vertical-align: top;
     text-align: center;
 }
-.forum_post{
-    background-color: var(--blue2);
-    border: 1px solid var(--blue3);
+
+.forum_post,.forum_post_me{
     display: inline-block;
+    border-radius: 10px;
+    background-color: var(--green3);
+    border: 5px solid var(--green3);
     width: 50%;
-    vertical-align: top;
+}
+.forum_user_me{
+    background-color: var(--orange2);
+    border: 5px solid var(--orange3);
+}
+.forum_post_me{
+    background-color: var(--orange3);
+    border: 5px solid var(--orange3);
 }
 #title_menu_bar{
     position: static;
