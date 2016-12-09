@@ -4,15 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/r4m80/WebServer/server_files/.htaccess</file>
+            <file>file:/home/r4m80/WebServer/server_files/utils.php</file>
+            <file>file:/home/r4m80/WebServer/pages/global_chat.php</file>
+            <file>file:/home/r4m80/WebServer/.htaccess</file>
+            <file>file:/home/r4m80/WebServer/public_files/main_style.css</file>
+            <file>file:/home/r4m80/WebServer/server_files/config.php</file>
             <file>file:/home/r4m80/WebServer/server_files/default_header.php</file>
             <file>file:/home/r4m80/WebServer/pages/about.php</file>
             <file>file:/home/r4m80/WebServer/index.php</file>
+            <file>file:/home/r4m80/WebServer/pages/login.php</file>
+            <file>file:/home/r4m80/WebServer/pages/disconnect.php</file>
             <file>file:/home/r4m80/WebServer/public_files/get_page.php</file>
             <file>file:/home/r4m80/WebServer/server_files/default_body.php</file>
-            <file>file:/home/r4m80/WebServer/phpmyadmin/js/openlayers/theme/default/style.mobile.tidy.css</file>
-            <file>file:/home/r4m80/WebServer/.htaccess</file>
-            <file>file:/home/r4m80/WebServer/pages/forum.php</file>
-            <file>file:/home/r4m80/WebServer/public_files/main_style.css</file>
+            <file>file:/home/r4m80/WebServer/pages/register.php</file>
         </group>
     </open-files>
 </project-private>

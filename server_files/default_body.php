@@ -4,7 +4,7 @@
         <div id="user_info"><?php if($is_logged){echo($current_username);} ?></div>
 	<ul>
 		<li class="page"><a href="/home.html">Home</a></li>
-		<li class="page"><a href="/global_chat.html">Global Chat</a></li>
+		<li class="page"><a href="/tallker.html">Global Chat</a></li>
 		<li class="page"><a href="/about.html">About</a></li>
                 <?php if(!$is_logged){ ?>
 		<li class="account"><a href="/login.html">Login</a></li>

@@ -1,3 +1,7 @@
-ErrorDocument 404 /
+DirectoryIndex index.php
+
 RewriteEngine On
 RewriteRule .*\.html.* /public_files/get_page.php?page=$0 [L]
+
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html

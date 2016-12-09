@@ -1,6 +1,7 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT']."/server_files/config.php";
     include $_SERVER['DOCUMENT_ROOT']."/server_files/utils.php";
+    
     $global_message="";
     $pagetitle="";
     $SQLSAFE=str_replace("'", "",$_GET['page']);
@@ -15,28 +16,33 @@
         $data=$response->fetch();
         $pagepath="/pages/".$data["filepath"];
         $pagetitle=$data["title"];
+        http_response_code(200);
     }else{
-        $pagepath="";
-        $pagetitle="404 Error !";
+		header("Location: /404.html");
     }
+    
     $response->closeCursor();
     // Check if the user is logged in
     $is_logged=false;
     $current_username="";
     if(isset($_COOKIE["SessionID"])){
+		
         try{
             $db = getDb($CONFIG["dbname_kitchen"]);
         }catch(Exception $e){
             die($e->getMessage());
         }
+        
         $cookie_session_hash=$_COOKIE["SessionID"];
         $response = $db->query("SELECT * FROM `session_cookies` WHERE `session_hash`='$cookie_session_hash'");
         if($response->rowCount()==1){
             $data=$response->fetch();
             if(new DateTime()<=new DateTime($data["valid_until"])){
                 $temp_username=$data["username"];
-                $udb= getDb("accounts");
+                
+                $udb= getDb($CONFIG["dbname_accounts"]);
                 $resp=$udb->query("SELECT * FROM `users` WHERE `username`='$temp_username'");
+                
                 if($resp->rowCount()==1){
                     $is_logged=true;
                     $current_username=$temp_username;
@@ -46,6 +52,7 @@
                 }
             }
         }
+        
         $response->closeCursor();
         if(!$is_logged){
             // Delete potential entries
