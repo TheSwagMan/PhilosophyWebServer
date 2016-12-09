@@ -11,8 +11,7 @@
 		<li class="account"><a href="/register.html">Register</a></li>
                 <?php }else{ ?>
                 <li class="account"><a href="/home.html">My Account</a></li>
-		<li class="special"><a href="/disconnect.html">Disconnect</a></li>
-		<li class="special"><a href="/phpmyadmin/">PhpMyAdmin</a></li>
+		<li class="special"><a href="/logout.html">Disconnect</a></li>
                 <?php } ?>
 	</ul>
 </div>
