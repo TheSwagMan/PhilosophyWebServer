@@ -20,24 +20,24 @@ if (isset($_POST["user_realname"]) && isset($_POST["user_username"]) && isset($_
                     $db->query("INSERT INTO `users` (`realname`, `username`, `password`) VALUES ('$user_realname', '$user_username', '$user_password')");
                     connectUser($user_username);
                 } else {
-                    $error_message .= "The username is already in use !<br>";
+                    $error_message .= "The username is already in use !<br/>";
                 }
                 $response->closeCursor();
             } else {
-                $error_message .= "The passwords doesn't match !<br>";
+                $error_message .= "The passwords doesn't match !<br/>";
             }
         } else {
-            $error_message .= "Invalid entries !<br>";
+            $error_message .= "Invalid entries !<br/>";
         }
     } else {
-        $error_message .= "Please fill all the entries !<br>";
+        $error_message .= "Please fill all the entries !<br/>";
     }
 }
 ?>
 <form method="post">
-    <input type="text" placeholder="Realname..." pattern="<?php echo($CONFIG["reg_realname"]); ?>" name="user_realname" required title="Correct name please !(<?php echo($CONFIG["reg_realname"]); ?>)"/><br>
-    <input type="text" placeholder="Username..." pattern="<?php echo($CONFIG["reg_username"]); ?>" name="user_username" required title="Correct username please ! (<?php echo($CONFIG["reg_username"]); ?>)"/><br>
-    <input type="password" placeholder="Password..." name="user_password" required/><br>
-    <input type="password" placeholder="Confirm..." name="user_confirmpassword" required/><br>
+    <input type="text" placeholder="Realname..." pattern="<?php echo($CONFIG["reg_realname"]); ?>" name="user_realname" required title="Correct name please !(<?php echo($CONFIG["reg_realname"]); ?>)"/><br/>
+    <input type="text" placeholder="Username..." pattern="<?php echo($CONFIG["reg_username"]); ?>" name="user_username" required title="Correct username please ! (<?php echo($CONFIG["reg_username"]); ?>)"/><br/>
+    <input type="password" placeholder="Password..." name="user_password" required/><br/>
+    <input type="password" placeholder="Confirm..." name="user_confirmpassword" required/><br/>
     <input type="submit" value="Login"/>
 </form>

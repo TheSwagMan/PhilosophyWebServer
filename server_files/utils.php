@@ -1,13 +1,24 @@
 <?php
+function hex2rgba($color, $opacity) {
+    $color = substr($color, 1);
+    if (strlen($color) == 6) {
+        $hex = array($color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5]);
+    } elseif (strlen($color) == 3) {
+        $hex = array($color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2]);
+    }
+    $rgb = array_map('hexdec', $hex);
+    $output = 'rgba(' . implode(",", $rgb) . ',' . $opacity . ')';
+    return $output;
+}
 
 function redirect($url) {
     ?>
-        <form id="redirForm" action="<?php echo($url); ?>" method="post">
+    <form id="redirForm" action="<?php echo($url); ?>" method="post">
         <input type="hidden" name="oldurl" value="<?php echo($_SERVER['REQUEST_URI']); ?>">
-        </form>
-        <script type="text/javascript">
-            document.getElementById('redirForm').submit();
-        </script>
+    </form>
+    <script type="text/javascript">
+        document.getElementById('redirForm').submit();
+    </script>
     <?php
 }
 
@@ -61,5 +72,4 @@ function connectUser($username) {
     setcookie("SessionID", $session_random_hash, strtotime($valid_until));
     redirect("/");
 }
-
 ?>
