@@ -32,8 +32,8 @@
     if($is_logged){
 ?>
 <form method="post">
-	<input type="text" name="post_content">
-        <input type="submit" value="Post !">
+	<input type="text" name="post_content"/>
+        <input type="submit" value="Post !"/>
 </form>
 <?php }else{ ?>
 <p class="info">You must be logged in to post a message !</p>

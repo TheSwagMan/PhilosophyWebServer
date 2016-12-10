@@ -10,8 +10,8 @@
 		<li class="account"><a href="/login.html">Login</a></li>
 		<li class="account"><a href="/register.html">Register</a></li>
                 <?php }else{ ?>
-                <li class="account"><a href="/home.html">My Account</a></li>
-		<li class="special"><a href="/logout.html">Disconnect</a></li>
+                <li class="account"><a href="/myaccount.html">My Account</a></li>
+		<li class="special"><a href="/logout.html">Logout</a></li>
                 <?php } ?>
 	</ul>
 </div>
