@@ -34,7 +34,7 @@ if (isset($_POST["user_realname"]) && isset($_POST["user_username"]) && isset($_
     }
 }
 ?>
-<form method="post">
+<form class="account_form" method="post">
     <input type="text" placeholder="Realname..." pattern="<?php echo($CONFIG["reg_realname"]); ?>" name="user_realname" required title="Correct name please !(<?php echo($CONFIG["reg_realname"]); ?>)"/><br/>
     <input type="text" placeholder="Username..." pattern="<?php echo($CONFIG["reg_username"]); ?>" name="user_username" required title="Correct username please ! (<?php echo($CONFIG["reg_username"]); ?>)"/><br/>
     <input type="password" placeholder="Password..." name="user_password" required/><br/>

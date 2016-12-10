@@ -22,7 +22,7 @@
     }
 	
 ?>
-<form method="post">
+<form class="account_form" method="post">
     <input type="text" placeholder="Username..." name="user_username"/><br/>
     <input type="password" placeholder="Password..." name="user_password"/><br/>
     <input type="submit" value="Login">

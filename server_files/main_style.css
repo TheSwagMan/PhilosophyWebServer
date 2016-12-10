@@ -45,7 +45,7 @@ body{
     height: auto;
     width: 100%;
     background-color: <?php echo($blue2); ?>;
-	
+    margin-bottom: 2%;
 }
 #title_menu_bar h1{
     font-family: 'Raleway', sans-serif;
@@ -100,10 +100,13 @@ body{
 
 #user_info{
     position: fixed;
-    background-color: rgba(red(<?php echo($blue4); ?>), green(<?php echo($blue4); ?>), blue(<?php echo($blue4); ?>), 0.5);;
-    color: <?php echo($blue0);
+    background-color: <?php echo(hex2rgba($blue4,0.3)); ?>;
+    color: <?php echo($blue0);?>;
     right: 0;
     top: 0;
     padding: 1%;
+    text-align: center;
+}
+.account_form{
     text-align: center;
 }
