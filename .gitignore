@@ -2,3 +2,9 @@
 *.jpg
 *.png
 *.jpeg
+*.project
+*.buildpath
+nbproject*
+phpmyadmin*
+*.zip
+other*
