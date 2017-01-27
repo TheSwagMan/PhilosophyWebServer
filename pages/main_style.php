@@ -16,6 +16,7 @@
     $orange2 = "#FA7";
     $orange3 = "#E95";
     $orange4 = "#951";
+    $red4 = "#F53";
     $black = "#000";
     $white = "#FFF";
     require $_SERVER['DOCUMENT_ROOT'] . "/server_files/main_style.css";

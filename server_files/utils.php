@@ -23,7 +23,7 @@ function redirect($url) {
 }
 
 function sqlXSSSafe($input) {
-    return htmlspecialchars(str_replace("'", "", $input));
+    return htmlentities($input,ENT_QUOTES);
 }
 
 function deleteAccount($username) {
@@ -59,7 +59,6 @@ function getRandomHash() {
 
 function connectUser($username) {
     global $CONFIG;
-    include $_SERVER['DOCUMENT_ROOT'] . "/server_files/config.php";
     try {
         $db = getDb($CONFIG["dbname_kitchen"]);
     } catch (Exception $e) {
@@ -71,5 +70,23 @@ function connectUser($username) {
     $db->query("INSERT INTO `session_cookies` (`username`, `session_hash`, `valid_until`) VALUES ('$username', '$session_random_hash', '$valid_until')");
     setcookie("SessionID", $session_random_hash, strtotime($valid_until));
     redirect("/");
+}
+function forumEntryFormat($is_yours,$name,$message,$id){
+    $pre="";
+    $buttons="";
+    if($is_yours){
+        $pre="_me";
+        $buttons="<div class='buttons'><button class='delete'onclick='deleteMessage(".$id.")'>Delete</button><button class='edit' onclick='editMessage(".$id.")'>Edit</button></div>";
+    }
+    return "<div class='forum_entry".$pre."'><div class='forum_user'>".$name."</div><div class='forum_post'>".$message."</div>".$buttons."</div>";
+}
+function checkRealname($str){
+    return (5<=strlen($str))&&(strlen($str)<=40)&&($str[0]!==" ");
+}
+function checkUsername($str){
+    return (4<=strlen($str))&&(strlen($str)<=32)&&(strpos($str, " ")===false);
+}
+function checkPassword($str){
+    return (4<=strlen($str))&&(strlen($str)<=32)&&(strpos($str, " ")===false);
 }
 ?>

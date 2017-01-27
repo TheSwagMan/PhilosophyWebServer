@@ -1,9 +1,10 @@
 <?php
     include $_SERVER['DOCUMENT_ROOT'] . "/server_files/config.php";
     include $_SERVER['DOCUMENT_ROOT'] . "/server_files/utils.php";
+    
+    date_default_timezone_set($CONFIG["locale_zone"]); 
     $global_message = "";
-    $SQLSAFE = str_replace("'", "", $_GET['page']);
-    $pageid = str_replace("/", "", $SQLSAFE);
+    $pageid = str_replace("/", "", sqlXSSSafe($_GET['page']));
     $db = getDb($CONFIG["dbname_urlredirect"]);
     $response = $db->query("SELECT * FROM pages WHERE page='$pageid'");
     if ($response->rowCount() == 1) {
@@ -16,7 +17,6 @@
     } else {
         redirect("/404.html");
     }
-
     $response->closeCursor();
     // Check if the user is logged in
     $is_logged = false;
@@ -36,16 +36,17 @@
             $data = $response->fetch();
             if (new DateTime() <= new DateTime($data["valid_until"])) {
                 $temp_username = $data["username"];
-
                 $udb = getDb($CONFIG["dbname_accounts"]);
                 $resp = $udb->query("SELECT * FROM `users` WHERE `username`='$temp_username'");
-
                 if ($resp->rowCount() == 1) {
                     $data2=$resp->fetch();
                     $is_logged = true;
                     $current_username = $temp_username;
                     $current_realname = $data2["realname"];
                     $userlevel = $data2["level"];
+                    // adding more time to kitchen
+                    $valid_until=cookieTime();
+                    $db->query("UPDATE `session_cookies` SET `valid_until`='$valid_until' WHERE `session_hash`='$cookie_session_hash'");
                     setcookie("SessionID", $cookie_session_hash, strtotime(cookieTime()));
                 } else {
                     redirect("/logout.html");
@@ -65,23 +66,25 @@
         }
     }
     if($doctype=="html"){
+        ?>
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <?php require $_SERVER['DOCUMENT_ROOT'] . "/server_files/default_header.php"; ?>
+                <title><?php echo($pagetitle); ?></title>
+            </head>
+            <body>
+                <?php require $_SERVER['DOCUMENT_ROOT'] . "/server_files/default_body.php"; ?>
+                <?php if (is_file($_SERVER['DOCUMENT_ROOT'] . $pagepath)) {
+                    require $_SERVER['DOCUMENT_ROOT'] . $pagepath;
+                } else {
+                    redirect("/404.html");
+                } ?>
+                <p id="error_message"><?php echo($error_message); ?></p>
+            </body>
+        </html>
+        <?php
+    }else{
+        require $_SERVER['DOCUMENT_ROOT'] . $pagepath;
+    }
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <?php require $_SERVER['DOCUMENT_ROOT'] . "/server_files/default_header.php"; ?>
-        <title><?php echo($pagetitle); ?></title>
-    </head>
-    <body>
-        <?php require $_SERVER['DOCUMENT_ROOT'] . "/server_files/default_body.php"; ?>
-        <?php if (is_file($_SERVER['DOCUMENT_ROOT'] . $pagepath)) {
-            require $_SERVER['DOCUMENT_ROOT'] . $pagepath;
-        } else {
-            require '/pages/404.php';
-        } ?>
-        <p id="error_message"><?php echo($error_message); ?></p>
-    </body>
-</html>
-<?php }else{
-    require $_SERVER['DOCUMENT_ROOT'] . $pagepath;
-} ?>

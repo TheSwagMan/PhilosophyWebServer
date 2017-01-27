@@ -5,6 +5,7 @@ body{
     font-size: 150%;
 }
 #forum_div{
+    z-index: 1;
     position: relative;
 }
 .forum_user{
@@ -51,8 +52,13 @@ body{
     font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
-    font-size: 300%;
     text-align: center;
+}
+.desk #title_menu_bar h1{
+    font-size: 300%;
+}
+.phone #title_menu_bar h1{
+    font-size: 200%;
 }
 #title_menu_bar ul{
     list-style-type: none;
@@ -63,6 +69,24 @@ body{
 }
 #title_menu_bar ul li{
     float: left;
+}
+.desk #title_menu_bar ul{
+    display: hidden;
+}
+.phone #title_menu_bar ul{
+    display: none;
+}
+/*.desk #openbar{
+    display: hidden;
+}
+.phone #openbar{
+    display: none;
+}*/
+.desk #title_menu_bar ul li{
+    clear: none;
+}
+.phone #title_menu_bar ul li{
+    clear: left;
 }
 #title_menu_bar ul .page a{
     display: block;
@@ -99,6 +123,7 @@ body{
 }
 
 #user_info{
+    z-index:99;
     position: fixed;
     background-color: <?php echo(hex2rgba($blue4,0.3)); ?>;
     color: <?php echo($blue0);?>;
@@ -109,4 +134,24 @@ body{
 }
 .account_form{
     text-align: center;
+}
+
+.buttons{
+    display: inline-block;
+}
+.buttons .delete{
+    border-radius: 5px;
+    background-color: <?php echo($red4); ?>;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+.buttons .edit{
+    border-radius: 5px;
+    background-color: <?php echo($blue3); ?>;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }

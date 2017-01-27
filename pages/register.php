@@ -7,7 +7,7 @@ if (isset($_POST["user_realname"]) && isset($_POST["user_username"]) && isset($_
     $user_password = sqlXSSSafe($_POST["user_password"]);
     $user_confirmpassword = sqlXSSSafe($_POST["user_confirmpassword"]);
     if ($user_realname != "" && $user_username != "" && $user_password != "" && $user_confirmpassword != "") {
-        if (preg_match("/" . $CONFIG["reg_username"] . "/", $user_username) && preg_match("/" . $CONFIG["reg_realname"] . "/", $user_realname)&&preg_match("/" . $CONFIG["reg_password"] . "/", $user_password)) {
+        if (checkUsername($user_username) && checkRealname($user_realname)&&checkPassword($user_password)) {
             if ($user_confirmpassword == $user_password) {
                 try {
                     $db = getDb($CONFIG["dbname_accounts"]);
@@ -35,9 +35,9 @@ if (isset($_POST["user_realname"]) && isset($_POST["user_username"]) && isset($_
 }
 ?>
 <form class="account_form" method="post">
-    <input type="text" placeholder="Realname..." pattern="<?php echo($CONFIG["reg_realname"]); ?>" name="user_realname" required title="Correct name please !(<?php echo($CONFIG["reg_realname"]); ?>)"/><br/>
-    <input type="text" placeholder="Username..." pattern="<?php echo($CONFIG["reg_username"]); ?>" name="user_username" required title="Correct username please ! (<?php echo($CONFIG["reg_username"]); ?>)"/><br/>
-    <input type="password" placeholder="Password..." name="user_password" required/><br/>
-    <input type="password" placeholder="Confirm..." name="user_confirmpassword" required/><br/>
+    <input type="text" pattern=".{5,40}" placeholder="Realname..." name="user_realname" required /><br/>
+    <input type="text" pattern=".{4,32}" placeholder="Username..." name="user_username" required /><br/>
+    <input type="password" pattern=".{6,32}" placeholder="Password..." name="user_password" required/><br/>
+    <input type="password" pattern=".{6,32}" placeholder="Confirm..." name="user_confirmpassword" required/><br/>
     <input type="submit" value="Login"/>
 </form>
