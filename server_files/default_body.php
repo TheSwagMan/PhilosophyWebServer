@@ -2,7 +2,10 @@
 <div id="title_menu_bar">
 	<h1><?php echo($pagetitle); ?></h1>
         <?php if($is_logged){ ?><div id="user_info"><?php echo($current_realname);?><br/><?php echo("(".$current_username.")"); ?></div><?php } ?>
-	<ul>
+	<div id="phone_button" onclick="toogleMenu()">
+		MENU
+	</div>
+	<ul id="pages">
 		<li class="page"><a href="/home.html">Home</a></li>
 		<li class="page"><a href="/tallker.html">Global Chat</a></li>
 		<li class="page"><a href="/about.html">About</a></li>
@@ -15,4 +18,3 @@
                 <?php } ?>
 	</ul>
 </div>
-<div class="global_message"><?php echo($global_message); ?></div>

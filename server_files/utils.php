@@ -20,6 +20,7 @@ function redirect($url) {
         document.getElementById('redirForm').submit();
     </script>
     <?php
+    die();
 }
 
 function sqlXSSSafe($input) {
@@ -73,10 +74,10 @@ function connectUser($username) {
 }
 function forumEntryFormat($is_yours,$name,$message,$id){
     $pre="";
-    $buttons="";
+    $buttons="<div class='buttons'><button class='like' onclick='likeMessage(".$id.")'>Like</button></div>";
     if($is_yours){
         $pre="_me";
-        $buttons="<div class='buttons'><button class='delete'onclick='deleteMessage(".$id.")'>Delete</button><button class='edit' onclick='editMessage(".$id.")'>Edit</button></div>";
+        $buttons="<button class='delete'onclick='deleteMessage(".$id.")'>Delete</button><button class='edit' onclick='editMessage(".$id.")'>Edit</button><button class='like' onclick='likeMessage(".$id.")'>Like</button></div>";
     }
     return "<div class='forum_entry".$pre."'><div class='forum_user'>".$name."</div><div class='forum_post'>".$message."</div>".$buttons."</div>";
 }

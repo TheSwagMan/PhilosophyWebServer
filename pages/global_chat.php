@@ -2,8 +2,6 @@
     echo "<script>";
     require $_SERVER['DOCUMENT_ROOT'] . "/server_files/forum_refresh.js";
     echo "</script>";
-    echo "<iframe style='visibility: hidden;height:0;width:0;' name='hidden_iframe_send' id='hidden_iframe_send'></iframe>";
-    echo "<iframe style='visibility: hidden;height:0;width:0;' name='hidden_iframe_receive' id='hidden_iframe_receive'></iframe>";
     ?>
     <div id='forum_div'></div>
     <?php
