@@ -85,10 +85,10 @@ function forumEntryFormat($is_logged,$is_yours,$name,$message,$id,$likes){
     if($is_button){
       $buttons="<div class='buttons'>";
       if($is_yours){
-
-        $buttons=$buttons."<button class='delete'onclick='deleteMessage(".$id.")'>Delete</button><button class='edit' onclick='editMessage(".$id.")'>Edit</button>";
+        $buttons=$buttons."<button class='delete'onclick='deleteMessage(".$id.")'>Delete Post !</button><button class='edit' onclick='editMessage(".$id.")'>Edit</button>";
+      }else{
+        $buttons=$buttons."<button class='like' onclick='likeMessage(".$id.")'>Like (".$likes.")</button>";
       }
-      $buttons=$buttons."<button class='like' onclick='likeMessage(".$id.")'>Like (".$likes.")</button>";
       $buttons=$buttons."</div>";
     }
     return "<div class='forum_entry".$pre."'><div class='forum_user'>".$name."</div><div class='forum_post'>".$message."</div>".$buttons."</div>";

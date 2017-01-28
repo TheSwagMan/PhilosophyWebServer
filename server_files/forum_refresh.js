@@ -3,14 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
     getNewMessageLoop();
 }, false);
 
-function setAndDestroy(formIframe){
-    var sc=(window.innerHeight + window.scrollY) >= document.body.offsetHeight;
-    document.getElementById("forum_div").innerHTML=formIframe[1].contentWindow.document.body.innerHTML;
-    destroy(formIframe);
-    if(sc){
-        window.scrollTo(0,document.body.scrollHeight);
-    }
-}
 function destroy(formIframe){
     document.body.removeChild(formIframe[0]);
     document.body.removeChild(formIframe[1]);
@@ -21,9 +13,15 @@ function getNewMessageLoop(){
     },5000);
 }
 function getNewMessages() {
-    var todel = post("/get_messages.html",{"order": document.getElementById("order").value});//{"TIMESTAMP":Date.now()-3000}
+    var sc=(window.innerHeight + window.scrollY) >= document.body.offsetHeight;
+    var formIframe = post("/get_messages.html",{"order": document.getElementById("order").value});//{"TIMESTAMP":Date.now()-3000}
     setTimeout(function(){
-        setAndDestroy(todel);
+        document.getElementById("forum_div").innerHTML=formIframe[1].contentWindow.document.body.innerHTML;
+        destroy(formIframe);
+        if(sc&&document.body.getAttribute("class")=="desk"){
+            console.log("WORKING !");
+            window.scrollTo(0,document.body.scrollHeight);
+        }
     },500);
 }
 
@@ -72,18 +70,16 @@ function post(url,data){
     iframe.setAttribute("name",iframeid);
     iframe.setAttribute("id",iframeid);
     var form = document.createElement("form");
-    form.setAttribute("method", "post");
     form.setAttribute("style", "visibility: hidden;height:0;width:0;");
+    form.setAttribute("method", "post");
     form.setAttribute("action", url);
     form.setAttribute("target", iframeid);
     for(var key in data) {
-        if(data.hasOwnProperty(key)) {
-            var hiddenField = document.createElement("input");
-            hiddenField.setAttribute("type", "hidden");
-            hiddenField.setAttribute("name", key);
-            hiddenField.setAttribute("value", data[key]);
-            form.appendChild(hiddenField);
-         }
+        var hiddenField = document.createElement("input");
+        hiddenField.setAttribute("type", "hidden");
+        hiddenField.setAttribute("name", key);
+        hiddenField.setAttribute("value", data[key]);
+        form.appendChild(hiddenField);
     }
     document.body.appendChild(iframe);
     document.body.appendChild(form);

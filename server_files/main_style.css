@@ -159,20 +159,17 @@ body{
 }
 .buttons *{
   margin-left: 5px;
+  width: 50px;
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+  height: 100%;
 }
 .buttons .like{
-    border-radius: 5px;
-    background-color: pink;/*<?php echo($red4); ?>;*/
-    border: none;
-    text-align: center;
-    height: 100%;
+    background-color: #FBC;/*<?php echo($red4); ?>;*/
 }
 .buttons .delete{
-    border-radius: 5px;
     background-color: <?php echo($red4); ?>;
-    border: none;
-    text-align: center;
-    height: 100%;
 }
 .buttons .edit{
     display: none;

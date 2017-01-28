@@ -6,6 +6,6 @@ if(isset($_POST["message_id"])&&!empty($_POST["message_id"])){
 		die('Error : '.$e->getMessage());
 	}
 	$id=sqlXSSSafe($_POST["message_id"]);
-	$db->query("UPDATE posts SET post_liked=post_liked+1 WHERE ID='$id'");
+	$db->query("UPDATE posts SET post_liked=post_liked+1 WHERE ID='$id' AND NOT post_user_username='$current_username';");
 }
 ?>
