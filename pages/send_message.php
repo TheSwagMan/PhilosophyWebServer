@@ -6,6 +6,6 @@
 		        die('Error : '.$e->getMessage());
 		}
         $post_content=sqlXSSSafe($_POST["post_content"]);
-        $db->query("INSERT INTO `posts` (`post_user_username`,`post_content`) VALUES ('$current_username', '$post_content');");
+        $db->query("INSERT INTO posts (post_user_username,post_content) VALUES ('$current_username', '$post_content');");
     }
 ?>

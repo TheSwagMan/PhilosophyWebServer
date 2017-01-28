@@ -31,13 +31,13 @@
         }
 
         $cookie_session_hash = $_COOKIE["SessionID"];
-        $response = $db->query("SELECT * FROM `session_cookies` WHERE `session_hash`='$cookie_session_hash'");
+        $response = $db->query("SELECT * FROM session_cookies WHERE session_hash='$cookie_session_hash'");
         if ($response->rowCount() == 1) {
             $data = $response->fetch();
             if (new DateTime() <= new DateTime($data["valid_until"])) {
                 $temp_username = $data["username"];
                 $udb = getDb($CONFIG["dbname_accounts"]);
-                $resp = $udb->query("SELECT * FROM `users` WHERE `username`='$temp_username'");
+                $resp = $udb->query("SELECT * FROM users WHERE username='$temp_username'");
                 if ($resp->rowCount() == 1) {
                     $data2=$resp->fetch();
                     $is_logged = true;
@@ -46,7 +46,7 @@
                     $userlevel = $data2["level"];
                     // adding more time to kitchen
                     $valid_until=cookieTime();
-                    $db->query("UPDATE `session_cookies` SET `valid_until`='$valid_until' WHERE `session_hash`='$cookie_session_hash'");
+                    $db->query("UPDATE session_cookies SET valid_until='$valid_until' WHERE session_hash='$cookie_session_hash'");
                     setcookie("SessionID", $cookie_session_hash, strtotime(cookieTime()));
                 } else {
                     redirect("/logout.html");

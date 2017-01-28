@@ -17,7 +17,7 @@ if (isset($_POST["user_realname"]) && isset($_POST["user_username"]) && isset($_
                 $response = $db->query("SELECT * FROM users WHERE username='$user_username'");
                 if ($response->rowCount() <= 0) {
                     // New account is created
-                    $db->query("INSERT INTO `users` (`realname`, `username`, `password`) VALUES ('$user_realname', '$user_username', '$user_password')");
+                    $db->query("INSERT INTO users (realname, username, password) VALUES ('$user_realname', '$user_username', '$user_password')");
                     connectUser($user_username);
                 } else {
                     $error_message .= "The username is already in use !<br/>";

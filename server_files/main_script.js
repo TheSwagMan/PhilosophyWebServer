@@ -15,3 +15,11 @@ function setCorrectBodyClass(){
 		document.body.className='phone';
 	}
 }
+function toogleMenu(){
+    var menu=document.getElementById("pages_menu");
+    if(menu.hasAttribute("style")){
+        menu.removeAttribute("style");
+    }else{
+        menu.setAttribute("style","display: inherit;");
+    }
+}

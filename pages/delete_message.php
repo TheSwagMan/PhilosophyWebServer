@@ -6,6 +6,6 @@
 		        die('Error : '.$e->getMessage());
 		}
         $id=sqlXSSSafe($_POST["message_id"]);
-        $db->query("UPDATE `posts` SET `post_deleted`=1 WHERE `ID`='$id' AND `post_user_username`='$current_username';");
+        $db->query("UPDATE posts SET post_deleted=1 WHERE ID='$id' AND post_user_username='$current_username';");
     }
 ?>

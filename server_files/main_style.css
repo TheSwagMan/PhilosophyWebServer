@@ -68,21 +68,28 @@ body{
     overflow: hidden;
     background-color: <?php echo($blue3); ?>;
 }
-#title_menu_bar ul li{
+.desk #title_menu_bar ul li{
     float: left;
 }
-.desk #title_menu_bar ul{
+.phone #title_menu_bar ul li{
+    float: none;
+}
+.desk #pages_menu{
     display: inherit;
 }
-.phone #title_menu_bar ul{
+.phone #pages_menu{
     display: none;
 }
-/*.desk #openbar{
-    display: hidden;
+#phone_button{
+    background-color: <?php echo($blue4); ?>;
 }
-.phone #openbar{
+.desk #phone_button{
     display: none;
-}*/
+}
+.phone #phone_button{
+    display: inherit;
+    text-align: center;
+}
 .desk #title_menu_bar ul li{
     clear: none;
 }
@@ -136,9 +143,22 @@ body{
 .account_form{
     text-align: center;
 }
-
-.buttons{
-    display: inline-block;
+#order_select{
+  display: flex;
+  flex-direction: row;
+}
+#order_select div{
+  margin-right: 10px;
+}
+#order_select div:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+.buttons *:hover{
+    cursor: pointer;
+}
+.buttons *{
+  margin-left: 5px;
 }
 .buttons .like{
     border-radius: 5px;

@@ -5,7 +5,7 @@
 	<div id="phone_button" onclick="toogleMenu()">
 		MENU
 	</div>
-	<ul id="pages">
+	<ul id="pages_menu">
 		<li class="page"><a href="/home.html">Home</a></li>
 		<li class="page"><a href="/tallker.html">Global Chat</a></li>
 		<li class="page"><a href="/about.html">About</a></li>

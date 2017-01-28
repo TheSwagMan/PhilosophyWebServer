@@ -21,7 +21,7 @@ function getNewMessageLoop(){
     },5000);
 }
 function getNewMessages() {
-    var todel = post("/get_messages.html",{});//{"TIMESTAMP":Date.now()-3000}
+    var todel = post("/get_messages.html",{"order": document.getElementById("order").value});//{"TIMESTAMP":Date.now()-3000}
     setTimeout(function(){
         setAndDestroy(todel);
     },500);
@@ -32,13 +32,22 @@ function deleteMessage(id){
     setTimeout(function(){
         destroy(formIframe);
     },500);
+    getNewMessages();
 }
-
+function sendMessage(id){
+    var formIframe=post("/send_message.html",{"post_content":document.getElementById("post_content").value})
+    document.getElementById('post_content').value='';
+    setTimeout(function(){
+        destroy(formIframe);
+    },500);
+    getNewMessages();
+}
 function likeMessage(id){
     var formIframe=post("/like_message.html",{"message_id":id})
     setTimeout(function(){
         destroy(formIframe);
     },500);
+    getNewMessages();
 }
 function getRandomID(){
     var text = "";
@@ -46,6 +55,14 @@ function getRandomID(){
     for( var i=0; i < 5; i++ )
         text += possible.charAt(Math.floor(Math.random() * possible.length));
     return text;
+}
+function orderByDate(){
+    document.getElementById("order").value="date";
+    getNewMessages();
+}
+function orderByLike(){
+    document.getElementById("order").value="like";
+    getNewMessages();
 }
 function post(url,data){
     // use the form to fill the iframe (wait a litle before getting the result and remove created elements to avoid memory eating)
