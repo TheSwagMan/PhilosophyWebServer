@@ -1,6 +1,7 @@
 <?php
     if(isset($_POST['sure'])){
         deleteAccount($current_username);
+        clearSession($cookie_session_hash);
         header("Location: /");
     }else{
         ?>
